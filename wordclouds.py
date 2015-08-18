@@ -6,7 +6,7 @@ import shutil
 ##### THIS FILE CONTAINS THE FUNCTION FOR CREATING WORDCLOUDS USING PROCESSING
 
 
-def make_word_clouds(ldaobj,proc_path,weight_interval=(4,140),max_words=250):
+def make_word_clouds(tt,token_key,proc_path,weight_interval=(4,140),max_words=250):
 	""""
 	ldaobj = instance of topicmodels.LDA; should contain at least 1 sample
 	proc_path =  path to processing-java file 
@@ -22,11 +22,11 @@ def make_word_clouds(ldaobj,proc_path,weight_interval=(4,140),max_words=250):
 			TopicCloud0.pdf, TopicCloud1.pdf, ....
 	"""
 	# MAKE CLOUD
-	TT = ldaobj.tt_avg()
+	TT = tt
 
 	# NEED TO LOOP OVER TOPICS
 
-	topics = range(0,ldaobj.tt.shape[1])
+	topics = range(0,tt.shape[1])
 
 	for t in topics:
 		topic = t
@@ -35,7 +35,7 @@ def make_word_clouds(ldaobj,proc_path,weight_interval=(4,140),max_words=250):
 		proportions = proportions.astype(int)
 
 		# cleanedtokens = NEED TO FLIP ldaobj.token_key['inflat'] - mapping to number (which is row of matrix)
-		cleantokens = {v: k for k, v in ldaobj.token_key.items()}
+		cleantokens = {v: k for k, v in token_key.items()}
 
 	    # CREATE TEXT FILE (.PDE) FOR PROCESSING PROGRAM 
 		word_cloud = """import processing.pdf.*;
