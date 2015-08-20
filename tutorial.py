@@ -45,4 +45,4 @@ ldaobj.topic_content(20)
 # Choose how many of the last chains to keep - here it is 4
 ldaobj.samples_keep(4)
 
-make_word_clouds(ldaobj.tt_avg(),ldaobj.tokey_key,"~/Downloads/processing-2.2.1/processing-java",weight_interval=(4,140))
+make_word_clouds(ldaobj.tt_avg(),ldaobj.token_key,"~/Downloads/processing-2.2.1/processing-java",weight_interval=(4,140))
